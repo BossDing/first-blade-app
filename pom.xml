@@ -1,95 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.bladejava</groupId>
-	<artifactId>first-blade-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <groupId>com.bladejava</groupId>
+    <artifactId>first-blade-app</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-	<name>first-blade-app</name>
-	<url>https://github.com/lets-blade/first-blade-app</url>
-	
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+    <name>first-blade-app</name>
+    <url>https://github.com/lets-blade/first-blade-app</url>
 
-	<dependencies>
-		<dependency>
-		    <groupId>com.bladejava</groupId>
-		    <artifactId>blade-mvc</artifactId>
-		    <version>2.0.7-beta1</version>
-		</dependency>
-		<dependency>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.bladejava</groupId>
+            <artifactId>blade-mvc</artifactId>
+            <version>2.0.7-beta2</version>
+        </dependency>
+        <dependency>
             <groupId>com.bladejava</groupId>
             <artifactId>blade-template-jetbrick</artifactId>
             <version>0.1.2</version>
         </dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>3.3.7</version>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.7</version>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<finalName>first-blade-app</finalName>
-		<plugins>
-			<!-- Compile -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<appendAssemblyId>false</appendAssemblyId>
-					<descriptors>
-						<descriptor>package.xml</descriptor>
-					</descriptors>
-					<outputDirectory>${project.build.directory}/dist/</outputDirectory>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>com.bladejava.firstapp.Application</mainClass>
-							<classpathPrefix>lib/</classpathPrefix>
-							<addClasspath>true</addClasspath>
-						</manifest>
-						<manifestEntries>
-							<!-- 在Class-Path下添加配置文件的路径 -->
-							<Class-Path>resources/</Class-Path>
-						</manifestEntries>
-					</archive>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <finalName>first-blade-app</finalName>
+        <plugins>
+            <!-- Compile -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.bladejava.firstapp.Application</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
